@@ -37,6 +37,8 @@ NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KE
 
 ifeq ($(findstring --network sepolia,$(ARGS)),--network sepolia)
 	NETWORK_ARGS := --rpc-url $(SEPOLIA_RPC_URL) --account $(WALLET_ACCOUNT) --sender $(WALLET_ADDRESS) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
+else ifeq ($(findstring --network ganache,$(ARGS)),--network ganache)
+	NETWORK_ARGS := --rpc-url $(GANACHE_RPC_URL) --account $(GANACHE_WALLET_ACCOUNT) --sender $(GANACHE_WALLET_ADDRESS) --broadcast -vvvv
 endif
 
 deploy:
